@@ -1,29 +1,33 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import logo from "./logo.svg";
 
 function Counter() {
   const [counter, setCount] = useState(0);
-  const [incrementBySet, setIncrementBy] = useState(1);
+  const [incrementBy, setIncrementBy] = useState(1);
+  //useref is used since i want to use the incrementby in use effect but i also want it to update state in the tsx
+  const incrementByRef = useRef(1);
 
   function handleClick() {
     setCount(counter + 1);
   }
   function buyUpgrade(amount: number) {
-    incrementBy.current = incrementBy.current + amount;
+    const cost = 20;
+    if (counter >= cost) {
+      setIncrementBy(incrementBy + amount);
+      incrementByRef.current = incrementBy + amount;
+      setCount(counter - amount * cost);
+    }
   }
 
   useEffect(() => {
-    const id = setInterval(
-      () => setCount((oldCount) => oldCount + incrementBy.current),
+    const incrementer = setInterval(
+      () => setCount((oldCount) => oldCount + incrementByRef.current),
       1000
     );
-
     return () => {
-      clearInterval(id);
+      clearInterval(incrementer);
     };
   }, []);
-
-  useEffect(() => {}, [incrementBy]);
 
   return (
     <div>
@@ -31,7 +35,7 @@ function Counter() {
         {counter}{" "}
       </button>
       <button onClick={() => buyUpgrade(1)}>Buy upgrade</button>
-      <div>Increment each tick by : {incrementBy.current}</div>
+      <div>Increment each tick by : {incrementBy}</div>
     </div>
   );
 }
