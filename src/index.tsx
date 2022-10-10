@@ -14,8 +14,8 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <Counter></Counter>
+      <RiceGame />
     </Provider>
-    {/* <RiceGame /> */}
   </React.StrictMode>
 );
 
