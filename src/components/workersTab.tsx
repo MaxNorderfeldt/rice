@@ -8,6 +8,7 @@ function WorkersTab(props: any) {
   function hirePeasants(amount: number) {
     setPeasants(peasants + 1);
     setRice(5);
+    console.log("test");
   }
 
   return (
