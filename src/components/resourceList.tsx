@@ -1,10 +1,9 @@
 function ResourceList(props: any) {
-  const { rice, workers } = props;
+  const { rice } = props;
 
   return (
     <div>
       Resources <br></br>Rice: {rice} <br></br>
-      Workers: {workers}
     </div>
   );
 }

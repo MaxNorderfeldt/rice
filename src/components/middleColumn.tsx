@@ -1,15 +1,13 @@
 import { useState } from "react";
-import WorkersTab from "./workersTab";
 import ShopTab from "./shopTab";
 import "../styling/columns.css";
+import Workers from "../containers/workers";
 
 function MiddleColumn(props: any) {
   const [selectedTab, setSelectedTab] = useState("");
   function handleClick(component: string) {
     setSelectedTab(component);
   }
-
-  const { setRice } = props;
 
   function switchTab(component: string) {
     switch (component) {
@@ -18,7 +16,7 @@ function MiddleColumn(props: any) {
       case "buildings":
         return "buildings";
       case "workers":
-        return <WorkersTab setRice={setRice} />;
+        return <Workers />;
       default:
         break;
     }
