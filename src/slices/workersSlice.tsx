@@ -11,23 +11,20 @@ export const workerSlice = createSlice({
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
     // Use the PayloadAction type to declare the contents of `action.payload`
-    incrementWorkersByAmount: (state, action) => {
+    incrementWorkers: (state, action) => {
       state.workers += action.payload;
     },
-    incrementFarmersByAmount: (state, action) => {
+    incrementFarmers: (state, action) => {
       state.farmers += action.payload;
     },
-    decreaseWorkersByAmount: (state, action) => {
+    decreaseWorkers: (state, action) => {
       state.workers -= action.payload;
     },
   },
 });
 
-export const {
-  incrementWorkersByAmount,
-  decreaseWorkersByAmount,
-  incrementFarmersByAmount,
-} = workerSlice.actions;
+export const { incrementWorkers, decreaseWorkers, incrementFarmers } =
+  workerSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of

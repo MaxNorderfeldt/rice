@@ -1,27 +1,31 @@
 import { selectWorkers, selectFarmers } from "../slices/workersSlice";
+import { selectRice, decrementRice } from "../slices/riceSlice";
 import { useSelector } from "react-redux";
 import WorkersList from "../components/workersList";
 import { useDispatch } from "react-redux";
 import {
-  incrementWorkersByAmount,
-  incrementFarmersByAmount,
-  decreaseWorkersByAmount,
+  incrementWorkers,
+  incrementFarmers,
+  decreaseWorkers,
 } from "../slices/workersSlice";
 
 function Workers() {
   const dispatch = useDispatch();
   const workers = useSelector(selectWorkers);
   const farmers = useSelector(selectFarmers);
+  const rice = useSelector(selectRice);
 
   function assignFarmer() {
     if (workers > 0) {
-      dispatch(incrementFarmersByAmount(1));
-      dispatch(decreaseWorkersByAmount(1));
+      dispatch(incrementFarmers(1));
+      dispatch(decreaseWorkers(1));
     }
   }
 
   function hireWorker() {
-    dispatch(incrementWorkersByAmount(1));
+    if (rice > 5) {
+      dispatch(incrementWorkers(1));
+    }
   }
 
   return (

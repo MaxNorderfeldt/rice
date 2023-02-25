@@ -3,7 +3,7 @@ import Resources from "../containers/resources";
 import "../styling/columns.css";
 import "../styling/leftColumn.css";
 import { useDispatch } from "react-redux";
-import { incrementRiceByAmount } from "../slices/riceSlice";
+import { incrementRice } from "../slices/riceSlice";
 
 function LeftColumn(props: any) {
   const dispatch = useDispatch();
@@ -12,7 +12,7 @@ function LeftColumn(props: any) {
       <button
         id="rice-button"
         type="button"
-        onClick={() => dispatch(incrementRiceByAmount(1))}
+        onClick={() => dispatch(incrementRice(1))}
       >
         Collect Rice
       </button>

@@ -24,7 +24,7 @@ function MiddleColumn(props: any) {
   }
 
   return (
-    <div className="column">
+    <div className="column infrastructure">
       <div className="tab">
         <button className="tablinks" onClick={() => handleClick("shop")}>
           Shop
