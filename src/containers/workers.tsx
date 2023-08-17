@@ -9,6 +9,8 @@ import {
   decreaseWorkers,
 } from "../slices/workersSlice";
 
+const workerCost = 5;
+
 function Workers() {
   const dispatch = useDispatch();
   const workers = useSelector(selectWorkers);
@@ -23,8 +25,9 @@ function Workers() {
   }
 
   function hireWorker() {
-    if (rice > 5) {
+    if (rice >= workerCost) {
       dispatch(incrementWorkers(1));
+      dispatch(decrementRice(workerCost));
     }
   }
 

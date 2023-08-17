@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 function loadRice() {
-  console.log(window.localStorage.getItem("rice"));
   const rice = window.localStorage.getItem("rice");
   if (rice) {
     return parseInt(rice);
@@ -11,6 +10,7 @@ function loadRice() {
 
 const initialState = {
   value: loadRice(),
+  storage: 300,
 };
 
 export const riceSlice = createSlice({
@@ -23,10 +23,14 @@ export const riceSlice = createSlice({
       state.value = action.payload;
     },
     incrementRice: (state, action) => {
-      state.value += action.payload;
+      if (state.value + action.payload <= state.storage) {
+        state.value += action.payload;
+      } else {
+        state.value = state.storage;
+      }
     },
     decrementRice: (state, action) => {
-      state.value += action.payload;
+      state.value -= action.payload;
     },
   },
 });

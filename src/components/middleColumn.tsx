@@ -2,6 +2,7 @@ import { useState } from "react";
 import ShopTab from "./shopTab";
 import "../styling/columns.css";
 import Workers from "../containers/workers";
+import Buildings from "../containers/buildings";
 
 function MiddleColumn(props: any) {
   const [selectedTab, setSelectedTab] = useState("");
@@ -14,7 +15,7 @@ function MiddleColumn(props: any) {
       case "shop":
         return ShopTab();
       case "buildings":
-        return "buildings";
+        return <Buildings />;
       case "workers":
         return <Workers />;
       default:

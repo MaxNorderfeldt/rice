@@ -10,6 +10,10 @@ function WorkersList(props: any) {
         <button id="assign-farmer" type="button" onClick={incrementFarmer}>
           +
         </button>
+        <br />
+        Foresters:
+        <br />
+        Miners:
       </p>
     </div>
   );

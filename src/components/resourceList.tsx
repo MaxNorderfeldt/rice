@@ -1,9 +1,11 @@
 function ResourceList(props: any) {
-  const { rice } = props;
+  const { rice, incrementRiceBy } = props;
 
   return (
     <div>
-      Resources <br></br>Rice: {rice} <br></br>
+      Resources <br></br>Rice: {rice}{" "}
+      {incrementRiceBy ? "    " + incrementRiceBy + "/s" : null}
+      <br></br>
     </div>
   );
 }

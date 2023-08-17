@@ -2,19 +2,35 @@ import "../styling/navbar.css";
 import { useSelector } from "react-redux";
 import { incrementRice, selectRice } from "../slices/riceSlice";
 import ResourceList from "../components/resourceList";
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { selectWorkers, selectFarmers } from "../slices/workersSlice";
-import { useInterval } from "usehooks-ts";
+import { selectFarmers } from "../slices/workersSlice";
+import { selectFarms } from "../slices/buildingsSlice";
 
 function Resources(props: any) {
+  const [incrementRiceBy, setIncrementRiceBy] = useState(0);
   const dispatch = useDispatch();
+  const farms = useSelector(selectFarms);
   const farmers = useSelector(selectFarmers);
-  const ref = useRef(
-    setInterval(() => dispatch(incrementRice(1 + farmers)), 1000)
-  );
 
-  function incrementRiceBy() {}
+  useEffect(() => {
+    let timerID: ReturnType<typeof setTimeout>;
+    function timer() {
+      timerID = setTimeout(() => {
+        dispatch(incrementRice(incrementRiceBy));
+        timer();
+      }, 1000);
+    }
+    timer();
+
+    return () => {
+      clearTimeout(timerID);
+    };
+  }, [incrementRiceBy, dispatch]);
+
+  useEffect(() => {
+    setIncrementRiceBy(farmers * 0.5);
+  }, [farmers]);
 
   const rice = useSelector(selectRice);
 
@@ -26,7 +42,10 @@ function Resources(props: any) {
 
   return (
     <div>
-      <ResourceList rice={rice}></ResourceList>
+      <ResourceList
+        rice={rice}
+        incrementRiceBy={incrementRiceBy}
+      ></ResourceList>
     </div>
   );
 }
