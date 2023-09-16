@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/rice/static/css/main.935cbd68.css",
+    "main.js": "/rice/static/js/main.6c937747.js",
+    "static/js/787.1189b49f.chunk.js": "/rice/static/js/787.1189b49f.chunk.js",
+    "index.html": "/rice/index.html",
+    "main.935cbd68.css.map": "/rice/static/css/main.935cbd68.css.map",
+    "main.6c937747.js.map": "/rice/static/js/main.6c937747.js.map",
+    "787.1189b49f.chunk.js.map": "/rice/static/js/787.1189b49f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.935cbd68.css",
+    "static/js/main.6c937747.js"
+  ]
+}
